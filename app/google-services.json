@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "215820154852",
+    "firebase_url": "https://nineone1-c98e9.firebaseio.com",
+    "project_id": "nineone1-c98e9",
+    "storage_bucket": "nineone1-c98e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215820154852:android:be4b8a4ce180999e64f9f1",
+        "android_client_info": {
+          "package_name": "com.gamecodeschool.nineone1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215820154852-i6mjuadgikpnoabdudoasj4jdt4feqng.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gamecodeschool.nineone1",
+            "certificate_hash": "0942dc372bd0272d4c97d5e4c9531639f7721ff8"
+          }
+        },
+        {
+          "client_id": "215820154852-s3st435lanosd7jtc368iobhigc1btgg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSuEcczu7P-X937Sph8LHdMwTbSIhRLjc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215820154852-s3st435lanosd7jtc368iobhigc1btgg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
