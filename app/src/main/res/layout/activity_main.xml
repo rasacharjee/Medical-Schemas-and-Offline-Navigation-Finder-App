@@ -4,16 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkground"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="Hello World"
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="326dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="156dp"
+        android:background="@drawable/button_custom"
+        android:gravity="center_horizontal"
+        android:hint="Enter disease"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="133dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="84dp"
+        android:background="@drawable/button_custom"
+        android:text="@android:string/search_go"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
+
+    <Button
+        android:id="@+id/btnSchemes"
+        android:layout_width="121dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/button_custom"
+        android:text="SCHEMES"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
+
+    <Button
+        android:id="@+id/btnEmergency"
+        android:layout_width="140dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="84dp"
+        android:background="@drawable/button_custom"
+        android:text="EMERGENCY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSearch" />
+
+    <Button
+        android:id="@+id/btnOffline"
+        android:layout_width="128dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/button_custom"
+        android:text="OFFLINE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSchemes" />
 </androidx.constraintlayout.widget.ConstraintLayout>

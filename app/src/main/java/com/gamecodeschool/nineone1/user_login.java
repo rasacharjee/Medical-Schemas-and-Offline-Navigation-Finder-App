@@ -21,7 +21,7 @@ public class user_login extends AppCompatActivity {
     EditText etEmail,etPassword;
     Button btnLogin,btnRegister;
     FirebaseAuth fAuth;
-    ProgressDialog progressDialog ;
+   // ProgressDialog progressDialog ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +34,13 @@ public class user_login extends AppCompatActivity {
         btnRegister=findViewById(R.id.btnRegister);
         fAuth=FirebaseAuth.getInstance();
 
-        progressDialog=new ProgressDialog(getApplicationContext());
-        progressDialog.setTitle("WELCOME");
-        progressDialog.setMessage("Please wait while logging in");
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setProgress(0);
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.setCancelable(false);
+     //   progressDialog=new ProgressDialog(getApplicationContext());
+       // progressDialog.setTitle("WELCOME");
+        //progressDialog.setMessage("Please wait while logging in");
+        //progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        //progressDialog.setProgress(0);
+        //progressDialog.setCanceledOnTouchOutside(false);
+        //progressDialog.setCancelable(false);
 
         if (fAuth.getCurrentUser()!=null)
         {
@@ -59,17 +59,17 @@ public class user_login extends AppCompatActivity {
                 if(email.isEmpty()||password.isEmpty()){
                     Toast.makeText(getApplicationContext(),"valid email and password required",Toast.LENGTH_SHORT).show();
                 }else{
-                    progressDialog.show();
+                   // progressDialog.show();
                     btnLogin.setEnabled(false);
                    fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                        @Override
                        public void onComplete(@NonNull Task<AuthResult> task) {
                           if(task.isSuccessful()){
-                              progressDialog.dismiss();
+                     //         progressDialog.dismiss();
                               startActivity(new Intent(getApplicationContext(),MainActivity.class));
                           }else{
                               Toast.makeText(getApplicationContext(),"Invalid Credentials",Toast.LENGTH_LONG).show();
-                              progressDialog.dismiss();
+                       //       progressDialog.dismiss();
                               btnLogin.setEnabled(true);
                           }
                        }

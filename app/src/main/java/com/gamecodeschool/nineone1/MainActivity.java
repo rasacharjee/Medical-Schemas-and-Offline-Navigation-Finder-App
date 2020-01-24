@@ -13,6 +13,11 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.telephony.SmsManager;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,10 +35,82 @@ public class MainActivity extends AppCompatActivity {
     private final String ACCESS_COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private int PERMISSION_CODE=200;
 
+    private EditText etSearch;
+    Button btnSearch,btnOffline,btnEmer,btnSchemes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        etSearch=findViewById(R.id.etSearch);
+        btnSearch=findViewById(R.id.btnSearch);
+        btnEmer=findViewById(R.id.btnEmergency);
+        btnSchemes=findViewById(R.id.btnSchemes);
+        btnOffline=findViewById(R.id.btnOffline);
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               Toast.makeText(getApplicationContext(),"Work",Toast.LENGTH_SHORT).show();
+                //TODO searching code to be written
+            }
+        });
+
+        btnSchemes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Work",Toast.LENGTH_SHORT).show();
+                //TODO Schemes  code to be written
+            }
+        });
+
+        AlertDialog.Builder dialog=new AlertDialog.Builder(MainActivity.this);
+        dialog.setTitle("ENTER DISEASE");
+        dialog.setMessage("Enter disease name ");
+        final EditText input = new EditText(MainActivity.this);
+         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+               LinearLayout.LayoutParams.MATCH_PARENT,
+             LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setLayoutParams(lp);
+        dialog.setView(input);
+        dialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String message= input.getText().toString();
+                String phoneNo="9354436581";
+                if(message!=null){
+                    SmsManager smsManager=SmsManager.getDefault();
+                    smsManager.sendTextMessage(phoneNo,null,message,null,null);
+                    Toast.makeText(MainActivity.this,"Message sent ",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this,"Enter valid message",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        dialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        final AlertDialog alert=dialog.create();
+
+        btnEmer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Work",Toast.LENGTH_SHORT).show();
+                //TODO favourites diseases code to be written
+            }
+        });
+
+        btnOffline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               alert.show();
+                //TODO offline searching code to be written
+            }
+        });
         getLoactionPermission();
     }
 
