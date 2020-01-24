@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">NineOne1</string>
+    <string name="app_name">FinDoc</string>
+    <string name="access_token">pk.eyJ1IjoidGVybWluYXRvcjI1IiwiYSI6ImNrNXIyMTBzYjA4MzUzb211N2gwcWg2aXAifQ.gWKrM9Ozu8p4gDrb-yA0Fg</string>
 </resources>

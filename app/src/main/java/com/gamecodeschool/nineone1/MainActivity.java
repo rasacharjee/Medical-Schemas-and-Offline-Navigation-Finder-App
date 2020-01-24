@@ -13,11 +13,16 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import android.view.View;
+import android.widget.Button;
+
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -34,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private final String ACCESS_FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private final String ACCESS_COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private int PERMISSION_CODE=200;
+    private Button button;
 
     private EditText etSearch;
     Button btnSearch,btnOffline,btnEmer,btnSchemes;
@@ -51,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Toast.makeText(getApplicationContext(),"Work",Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(MainActivity.this,Map_Activity.class);
+                startActivity(intent);
                 //TODO searching code to be written
             }
         });
@@ -112,6 +119,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         getLoactionPermission();
+
+
+
     }
 
     private void getLoactionPermission() {
