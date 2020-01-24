@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,Map_Activity.class);
+                intent.putExtra("key" ,etSearch.getText().toString().trim());
                 startActivity(intent);
                 //TODO searching code to be written
             }

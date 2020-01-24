@@ -3,6 +3,7 @@ package com.gamecodeschool.nineone1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
@@ -11,6 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonObject;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.location.LocationEngineProvider;
@@ -40,6 +46,10 @@ import com.mapbox.services.android.navigation.ui.v5.NavigationLauncherOptions;
 import com.mapbox.services.android.navigation.ui.v5.route.NavigationMapRoute;
 import com.mapbox.services.android.navigation.v5.navigation.NavigationRoute;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.lang.ref.WeakReference;
 import java.util.List;
 
@@ -62,20 +72,53 @@ public class Map_Activity extends AppCompatActivity implements OnMapReadyCallbac
     private long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
     private DirectionsRoute currentRoute;
     private Button navigationButton;
+    private String result;
     private static final String TAG = "DirectionsActivity";
     private NavigationMapRoute navigationMapRoute;
     private Map_ActivityLocationCallback callback = new Map_ActivityLocationCallback(this);
+    private RequestQueue requestQueue;
+    private String url="https://api.myjson.com/bins/gzq16";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Mapbox.getInstance(this , getString(R.string.access_token));
         setContentView(R.layout.activity_map_);
+        Intent intent=getIntent();
+        result=intent.getStringExtra("key");
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
         navigationButton=findViewById(R.id.navigationButtton);
         navigationButton.setVisibility(View.GONE);
+
+        requestQueue = Volley.newRequestQueue(this);
+        final JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET , url , null , new com.android.volley.Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONObject jsonObject= new JSONObject(response.toString());
+                    JSONArray jsonArray = new JSONArray(result);
+                    for(int i=0;i<jsonArray.length();i++)
+                    {
+                        JSONObject detail= jsonArray.getJSONObject(i);
+                        Double latitude=Double.parseDouble(detail.getString("latitude"));
+                        Double longitude=Double.parseDouble(detail.getString("longitude"));
+                        Toast.makeText(,"heyaa", Toast.LENGTH_SHORT).show();
+                        Point destinationPoint = Point.fromLngLat(longitude, latitude);
+                        GeoJsonSource source = mapboxMap.getStyle().getSourceAs("destination-source-id");
+                        if (source != null) {
+                            source.setGeoJson(Feature.fromGeometry(destinationPoint));
+                        }
+                        // onMapReady(mapboxMap);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+              //  requestQueue.add(jsonObjectRequest);
+            }
+        });
     }
 
     @Override
