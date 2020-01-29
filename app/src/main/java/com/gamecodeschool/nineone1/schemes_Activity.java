@@ -37,7 +37,7 @@ public class schemes_Activity extends AppCompatActivity {
         tvLink=findViewById(R.id.tvLink);
 
         String url="https://api.myjson.com/bins/15zpq2";
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        /*JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -45,18 +45,15 @@ public class schemes_Activity extends AppCompatActivity {
                     JSONArray jsonArray=jsonObject.getJSONArray("data");
                     for(int i=0;i<1;i++){
                         JSONObject patient=jsonArray.getJSONObject(i);
-                        String title,disease,division,email,pattern,eligibility,benefits,procedure,link;
+                        String title,disease,division,email,pattern,eligibility,benefits,link;
 
-                        disease=patient.getString("disease");
-
-
+                            disease=patient.getString("disease");
                             title=patient.getString("title");
                             division=patient.getString("division");
                             email=patient.getString("email");
                             pattern=patient.getString("pattern");
                             eligibility=patient.getString("eligibility");
                             benefits=patient.getString("benefits");
-                            //procedure=patient.getString("title");
                             link=patient.getString("link");
                             tvTitle.setText(title);
                             tvDivision.setText(division);
@@ -66,7 +63,6 @@ public class schemes_Activity extends AppCompatActivity {
                             tvBen.setText(benefits);
                             tvLink.setText(link);
                             tvProc.setText(disease);
-
 
                     }
 
@@ -79,7 +75,7 @@ public class schemes_Activity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(schemes_Activity.this,"Error",Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
     }
 }
