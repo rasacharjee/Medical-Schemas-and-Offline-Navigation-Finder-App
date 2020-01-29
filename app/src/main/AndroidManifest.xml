@@ -17,9 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".Map_Activity"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".schemes_Activity"></activity>
+        <activity android:name=".Map_Activity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".user_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,9 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".user_register">
-
-        </activity>
+        <activity android:name=".user_register"></activity>
     </application>
 
 </manifest>

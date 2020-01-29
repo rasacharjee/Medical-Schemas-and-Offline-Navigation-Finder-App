@@ -25,6 +25,18 @@ import android.widget.Button;
 
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonArray;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private final String ACCESS_COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private int PERMISSION_CODE=200;
     private Button button;
+    private RequestQueue requestQueue;
 
     private EditText etSearch;
     Button btnSearch,btnOffline,btnEmer,btnSchemes;
@@ -53,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         btnEmer=findViewById(R.id.btnEmergency);
         btnSchemes=findViewById(R.id.btnSchemes);
         btnOffline=findViewById(R.id.btnOffline);
+        requestQueue= Volley.newRequestQueue(MainActivity.this);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +80,16 @@ public class MainActivity extends AppCompatActivity {
         btnSchemes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"Work",Toast.LENGTH_SHORT).show();
+                if(etSearch.getText().toString().trim()=="")
+                {
+                    Toast.makeText(MainActivity.this,"Please Enter the disease",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Intent intent=new Intent(MainActivity.this,schemes_Activity.class);
+                    intent.putExtra("key",etSearch.getText().toString().trim());
+                    startActivity(intent);
+                }
+                //TODO pass data from this intent to another
                 //TODO Schemes  code to be written
             }
         });
@@ -232,5 +255,6 @@ public class MainActivity extends AppCompatActivity {
         alert.show();
         return alert;
     }
+
 }
 
