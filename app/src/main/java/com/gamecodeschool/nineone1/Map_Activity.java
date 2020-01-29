@@ -93,7 +93,7 @@ public class Map_Activity extends AppCompatActivity implements OnMapReadyCallbac
         navigationButton.setVisibility(View.GONE);
 
         requestQueue = Volley.newRequestQueue(this);
-        final JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET , url , null , new com.android.volley.Response.Listener<JSONObject>() {
+      /*  final JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET , url , null , new com.android.volley.Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -118,7 +118,7 @@ public class Map_Activity extends AppCompatActivity implements OnMapReadyCallbac
 
               //  requestQueue.add(jsonObjectRequest);
             }
-        });
+        }); */
     }
 
     @Override
