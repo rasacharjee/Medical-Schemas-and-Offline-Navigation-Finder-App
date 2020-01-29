@@ -1,3 +1,4 @@
+
 package com.gamecodeschool.nineone1;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.gamecodeschool.nineone1.R;
+import com.gamecodeschool.nineone1.schemes_Activity;
 import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
@@ -85,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this,"Please Enter the disease",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Intent intent=new Intent(MainActivity.this,schemes_Activity.class);
+                    Intent intent=new Intent(MainActivity.this, schemes_Activity.class);
                     intent.putExtra("key",etSearch.getText().toString().trim());
                     startActivity(intent);
                 }
@@ -257,4 +260,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
+
+
 

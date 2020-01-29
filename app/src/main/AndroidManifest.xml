@@ -30,4 +30,7 @@
         <activity android:name=".user_register"></activity>
     </application>
 
+
+
+
 </manifest>
